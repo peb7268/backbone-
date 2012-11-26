@@ -17,9 +17,15 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/backbone.js"></script>
 	<script type="text/javascript" src="js/data.js"></script>
-	<script type="text/javascript" src="js/global.js" charset="utf-8"></script>
 </head>
 <body>
 	<div id="content"></div><!-- #content -->
+
+
+
+
+
+	
+	<script type="text/javascript" src="js/global.js" charset="utf-8"></script>
 </body>
 </html>
