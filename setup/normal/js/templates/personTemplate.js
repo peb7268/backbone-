@@ -1,0 +1,1 @@
+<strong><%= first_name %> <%= last_name %></strong> is a: <%= occupation %>
