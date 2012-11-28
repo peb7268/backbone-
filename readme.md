@@ -16,10 +16,10 @@ Steps:
  
 Gotchas
 ---------------------------------------------------------------------------------------------------------------------
-#Always return this from your render method. This allows chaining.
+#### * Always return this from your render method. This allows chaining.
 
-`(function(){
-	window.Overview = {
+     (function(){
+`	window.Overview = {
 		Models: {},
 		Collections: {},
 		Views: {},
