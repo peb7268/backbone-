@@ -1,36 +1,38 @@
-/** Project Name: Overview
-*	Desc: A Basecamp Replacement
-*
-* Steps:
-* 1) Wrap everything in a SIAF
-* 2) Setup your namespace
-* 3) Create your singular model and a collection to handle multiple models.
-* 4) Create your singular view collection view to handle multiple views.
-* 
-* 5) Create your collection instance and pass it a dataset (models), an array of objects.
-* 6) Create your collection view instance and pass it the name of the collection from step 5.
-* 7) Append your views to the body and call the render method and the el property of it.
-* 
-* Gotchas --
-* #Always return this from your render method. This allows chaining.
-*
-*/
+Project Name: Overview
+====================================================================================================================
+Description: A Basecamp Replacement for better CRM and Tech Team / Ops integration.
+
+Steps:
+---------------------------------------------------------------------------------------------------------------------
+
+1. Wrap everything in a SIAF
+2. Setup your namespace
+3. Create your singular model and a collection to handle multiple models.
+4. Create your singular view collection view to handle multiple views.
+ 
+5. Create your collection instance and pass it a dataset (models), an array of objects.
+6. Create your collection view instance and pass it the name of the collection from step 5.
+7. Append your views to the body and call the render method and the el property of it.
+ 
+Gotchas
+---------------------------------------------------------------------------------------------------------------------
+#### * Always return this from your render method. This allows chaining.
 
 
-(function(){
-	window.Overview = {
-		Models: {},
-		Collections: {},
-		Views: {},
-		vars: {}
-	};
+	(function(){
+			window.Overview = {
+			Models: {},
+			Collections: {},
+			Views: {},
+			vars: {}
+		};
 	//Globals
 	window.template = function(id){
 		return _.template($('#' + id).html());
 	};
 	Overview.vars.body = document.querySelectorAll('body');
 	Overview.vars.body[0].innerHTML = '<div id="content"></div>' + Overview.vars.body[0].innerHTML;
-	
+
 
 	//People Definitions
 	Overview.Models.Person = Backbone.Model.extend({
@@ -58,7 +60,7 @@
 		render: function(){
 			//console.log('I take the template and put the data into it.');
 			this.$el.html(this.template(this.model.toJSON()));
-			return this;	//If you omit this it will not chain and continue after it creates each person view
+			return this;
 		}	
 	}); 
 
@@ -70,13 +72,13 @@
 		render: function(){
 			//Filter through all items in a collection
 			this.collection.each(function(personModel){
-			
-				//Foreach create a new person view 	
-				var person = new Overview.Views.Person({ model: personModel });
 
-				//Append to the root element
-				this.$el.append(person.render().el);
-		}, this);
+			//Foreach create a new person view 	
+			var person = new Overview.Views.Person({ model: personModel });
+
+			//Append to the root element
+			this.$el.append(person.render().el);
+			}, this);
 
 			//Add the final result to the body
 			//$($('#content')).append(this.el);
@@ -107,15 +109,12 @@
 		updateTask: function(){
 			var newTask = this.$el.find('input.task').val();
 			this.model.set('title', newTask);
-			console.log('The model has been changed to: ',this.model.get('title'));
 		},
 		deleteTask: function(){
 			this.model.destroy();
-			console.log('the element has been deleted');
 		},
 		remove: function(){
 			this.$el.remove();
-			console.log('The element has been removed');
 		},
 		render: function(){
 			this.$el.html( this.template(this.model.toJSON()));
@@ -125,7 +124,7 @@
 
 	Overview.Views.Tasks = Backbone.View.extend({
 		tagName: 'form',
-			 id: 'TasksView',
+		id: 'TasksView',
 
 		initialize: function(){
 			this.collection.on('add', this.addOne, this);
@@ -149,7 +148,6 @@
 
 		events: {
 			'submit': 'submit'
-
 		},
 		submit: function(e){
 			e.preventDefault();
@@ -162,7 +160,7 @@
 		},
 		initialize: function(){}
 	});
-		
+
 	//Instances
 	var people = new Overview.Collections.People(roledex);								//People Collection
 	var tasks = new Overview.Collections.Tasks(tasksModel);								//tasks Collection
@@ -174,5 +172,4 @@
 	//Add the collection to the body	
 	$(document.body).prepend(peopleView.render().el);
 	$("#Tasks").append(tasksView.render().el);
-
-})();
+	})();
