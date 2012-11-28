@@ -34,7 +34,7 @@ Gotchas
 	Overview.vars.body[0].innerHTML = '<div id="content"></div>' + Overview.vars.body[0].innerHTML;
 
 
-	### People Definitions
+	//People Definitions
 	Overview.Models.Person = Backbone.Model.extend({
 		defaults: {
 			first_name: 'John',
@@ -48,7 +48,7 @@ Gotchas
 		}
 	}); 
 
-	### Collection of People
+	//Collection of People
 	Overview.Collections.People = Backbone.Collection.extend({
 		model: Overview.Models.Person
 	});
