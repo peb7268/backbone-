@@ -18,22 +18,23 @@ Gotchas
 ---------------------------------------------------------------------------------------------------------------------
 #### * Always return this from your render method. This allows chaining.
 
-     (function(){
-`	window.Overview = {
-		Models: {},
-		Collections: {},
-		Views: {},
-		vars: {}
-	};
+
+	(function(){
+			window.Overview = {
+			Models: {},
+			Collections: {},
+			Views: {},
+			vars: {}
+		};
 	//Globals
 	window.template = function(id){
 		return _.template($('#' + id).html());
 	};
 	Overview.vars.body = document.querySelectorAll('body');
 	Overview.vars.body[0].innerHTML = '<div id="content"></div>' + Overview.vars.body[0].innerHTML;
-	
 
-	//People Definitions
+
+	### People Definitions
 	Overview.Models.Person = Backbone.Model.extend({
 		defaults: {
 			first_name: 'John',
@@ -47,7 +48,7 @@ Gotchas
 		}
 	}); 
 
-	//Collection of People
+	### Collection of People
 	Overview.Collections.People = Backbone.Collection.extend({
 		model: Overview.Models.Person
 	});
@@ -59,7 +60,7 @@ Gotchas
 		render: function(){
 			//console.log('I take the template and put the data into it.');
 			this.$el.html(this.template(this.model.toJSON()));
-			return this;	//If you omit this it will not chain and continue after it creates each person view
+			return this;
 		}	
 	}); 
 
@@ -71,13 +72,13 @@ Gotchas
 		render: function(){
 			//Filter through all items in a collection
 			this.collection.each(function(personModel){
-			
-				//Foreach create a new person view 	
-				var person = new Overview.Views.Person({ model: personModel });
 
-				//Append to the root element
-				this.$el.append(person.render().el);
-		}, this);
+			//Foreach create a new person view 	
+			var person = new Overview.Views.Person({ model: personModel });
+
+			//Append to the root element
+			this.$el.append(person.render().el);
+			}, this);
 
 			//Add the final result to the body
 			//$($('#content')).append(this.el);
@@ -108,15 +109,12 @@ Gotchas
 		updateTask: function(){
 			var newTask = this.$el.find('input.task').val();
 			this.model.set('title', newTask);
-			console.log('The model has been changed to: ',this.model.get('title'));
 		},
 		deleteTask: function(){
 			this.model.destroy();
-			console.log('the element has been deleted');
 		},
 		remove: function(){
 			this.$el.remove();
-			console.log('The element has been removed');
 		},
 		render: function(){
 			this.$el.html( this.template(this.model.toJSON()));
@@ -126,7 +124,7 @@ Gotchas
 
 	Overview.Views.Tasks = Backbone.View.extend({
 		tagName: 'form',
-			 id: 'TasksView',
+		id: 'TasksView',
 
 		initialize: function(){
 			this.collection.on('add', this.addOne, this);
@@ -150,7 +148,6 @@ Gotchas
 
 		events: {
 			'submit': 'submit'
-
 		},
 		submit: function(e){
 			e.preventDefault();
@@ -163,7 +160,7 @@ Gotchas
 		},
 		initialize: function(){}
 	});
-		
+
 	//Instances
 	var people = new Overview.Collections.People(roledex);								//People Collection
 	var tasks = new Overview.Collections.Tasks(tasksModel);								//tasks Collection
@@ -177,4 +174,3 @@ Gotchas
 	$("#Tasks").append(tasksView.render().el);
 
 })();
-`
