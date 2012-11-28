@@ -13,21 +13,26 @@
 </head>
 <body>
 
-	<form id="addTask" action="">
-		<input type="text" placeholder="New Task...">
-		<input type="submit" value="Add Task" class="defaultButton">
-	</form>
-
 	<script id="personTemplate" type="text/template">
 		<strong><%= first_name %> <%= last_name %></strong> is a: <%= occupation %>
 	</script>
 
-	<script id="tasksTemplate" type="text/template">
-			<input name="<%= title %>" type="checkbox" class="taskCheck">
-			<input name="<%= title %>" value="<%= title %>" type="text" class="task"> is a: 
-			<input name="<%= title %>Priority"<%= priority %> value="<%= priority %>" type="text" class="priority">priority.
-			<span class="clear"><a href="#" class="update">Update</a><a href="#" class="delete">Delete</a></span>
-	</script>
+	<div id="Tasks">
+			<p class="blank">
+				<a href="#">Add a task..</a>
+				<form id="addTask" action="">
+					<input type="text" placeholder="New Task...">
+					<input type="submit" value="Add Task" class="defaultButton">
+				</form>	
+			</p>
+
+		<script id="tasksTemplate" type="text/template">
+				<input name="<%= title %>" type="checkbox" class="taskCheck">
+				<input name="<%= title %>" value="<%= title %>" type="text" class="task"> is a: 
+				<input name="<%= title %>Priority"<%= priority %> value="<%= priority %>" type="text" class="priority">priority.
+				<span class="clear"><a href="#" class="update">Update</a><a href="#" class="delete">Delete</a></span>
+		</script>
+	</div><!-- #Tasks -->
 
 	<script type="text/javascript" src="js/underscore.js"></script>
 	<script type="text/javascript" src="js/jquery.js"></script>

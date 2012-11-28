@@ -1,3 +1,22 @@
+/** Project Name: Overview
+*	Desc: A Basecamp Replacement
+*
+* Steps:
+* 1) Wrap everything in a SIAF
+* 2) Setup your namespace
+* 3) Create your singular model and a collection to handle multiple models.
+* 4) Create your singular view collection view to handle multiple views.
+* 
+* 5) Create your collection instance and pass it a dataset (models), an array of objects.
+* 6) Create your collection view instance and pass it the name of the collection from step 5.
+* 7) Append your views to the body and call the render method and the el property of it.
+* 
+* Gotchas --
+* #Always return this from your render method. This allows chaining.
+*
+*/
+
+
 (function(){
 	window.Overview = {
 		Models: {},
@@ -132,7 +151,6 @@
 			'submit': 'submit'
 
 		},
-
 		submit: function(e){
 			e.preventDefault();
 			var newTaskTitle = $(e.currentTarget).find('input[type="text"]').val();
@@ -142,10 +160,8 @@
 			});
 			this.collection.add(task);
 		},
-
 		initialize: function(){}
 	});
-
 		
 	//Instances
 	var people = new Overview.Collections.People(roledex);								//People Collection
@@ -154,8 +170,6 @@
 	var	peopleView = new Overview.Views.People({ collection: people });					//People View
 	var tasksView = new Overview.Views.Tasks({ collection: tasks });					//tasks Collection View
 	var addTasksView = new Overview.Views.AddTask({ collection: tasks });				//addTasks Collection View
-
-	
 
 	//Add the collection to the body	
 	$(document.body).prepend(peopleView.render().el);

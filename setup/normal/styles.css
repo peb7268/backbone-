@@ -170,6 +170,15 @@ body { font-size: 11pt; font-family: Helvetica, Arial, sans-serif; color: #35353
 	box-shadow: 0 1px #FF3350 inset;
 	border-color: #CC001D #990016 #66000E;
 }
+#Tasks p.blank {
+	border: none;
+	margin: 0 0 10px;
+	padding: 0;
+}
+#Tasks p.blank a {
+	color: #009BC4;
+	font-size:9pt;
+}
 
 /*-- Nav Styles ---------------------------------------------------------------*/
 #navBar {  }

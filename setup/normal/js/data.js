@@ -18,3 +18,18 @@ var roledex = [
 			phone: '770-867-5309'
 		}
 ] //closes roledex
+
+var tasksModel = [										
+		{
+			title: 'Go to store',
+			priority: 4
+		},
+		{
+			title: 'Get Todo App Built',
+			priority: 4
+		},
+		{
+			title: 'Study Backbone Tuts',
+			priority: 4
+		}
+]
