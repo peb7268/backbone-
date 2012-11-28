@@ -172,5 +172,4 @@ Gotchas
 	//Add the collection to the body	
 	$(document.body).prepend(peopleView.render().el);
 	$("#Tasks").append(tasksView.render().el);
-
-`})();`
+	})();
