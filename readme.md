@@ -1,18 +1,21 @@
 Project Name: Overview
 ---------------------------------------------------------------------------------------------------------------------
-*	Desc: A Basecamp Replacement
-*
-* Steps:
-* 1) Wrap everything in a SIAF
-* 2) Setup your namespace
-* 3) Create your singular model and a collection to handle multiple models.
-* 4) Create your singular view collection view to handle multiple views.
-* 
-* 5) Create your collection instance and pass it a dataset (models), an array of objects.
-* 6) Create your collection view instance and pass it the name of the collection from step 5.
-* 7) Append your views to the body and call the render method and the el property of it.
-* 
-* Gotchas --
+Description: A Basecamp Replacement for better CRM and Tech Team / Ops integration.
+
+Steps:
+====================================================================================================================
+
+1) Wrap everything in a SIAF
+2) Setup your namespace
+3) Create your singular model and a collection to handle multiple models.
+4) Create your singular view collection view to handle multiple views.
+ 
+5) Create your collection instance and pass it a dataset (models), an array of objects.
+6) Create your collection view instance and pass it the name of the collection from step 5.
+7) Append your views to the body and call the render method and the el property of it.
+ 
+Gotchas
+====================================================================================================================
 * #Always return this from your render method. This allows chaining.
 *
 */
