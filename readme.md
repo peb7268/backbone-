@@ -16,7 +16,8 @@ Steps:
  
 Gotchas
 ---------------------------------------------------------------------------------------------------------------------
-#### * Always return this from your render method. This allows chaining.
+#### Always return this from your render method. This allows chaining.
+#### When making your instances make your data structures (models) before your views
 
 
 	(function(){

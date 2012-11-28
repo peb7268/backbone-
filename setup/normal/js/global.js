@@ -3,7 +3,8 @@
 		Models: {},
 		Collections: {},
 		Views: {},
-		vars: {}
+		vars: {},
+		Router: {}
 	};
 	//Globals
 	window.template = function(id){
@@ -12,6 +13,21 @@
 	Overview.vars.body = document.querySelectorAll('body');
 	Overview.vars.body[0].innerHTML = '<div id="content"></div>' + Overview.vars.body[0].innerHTML;
 	
+	//Routers
+	Overview.Router = Backbone.Router.extend({
+		routes: {
+			'': 'index',
+		'today':'showTasks'
+		},
+
+		//Routes / Actions 
+		index: function(){
+			console.log('index action firing');
+		},
+		showTasks: function(){
+			console.log('im showing the tasks for today');
+		}
+	});
 
 	//People Definitions
 	Overview.Models.Person = Backbone.Model.extend({
@@ -155,6 +171,8 @@
 	var tasksView = new Overview.Views.Tasks({ collection: tasks });					//tasks Collection View
 	var addTasksView = new Overview.Views.AddTask({ collection: tasks });				//addTasks Collection View
 
+	new Overview.Router;																//Create a new Router Instance
+	Backbone.history.start();															//Tell Backbone to Start tracking URL hash changes
 	
 
 	//Add the collection to the body	
